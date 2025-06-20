@@ -1,0 +1,15 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kavusiks
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - http-route.yaml
+
+configMapGenerator:
+  - name: snake-config
+    namespace: kavusiks
+    literals:
+      - SNAKE_PORT_NUMBER=8080
